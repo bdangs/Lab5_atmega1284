@@ -19,69 +19,39 @@ int main(void) {
     unsigned char button = 0x00;
 
     while (1) {
-	button = PINA & 0x00;
-        if (button) {
-		led = led | 0x40;
-        }
-	button = ~PINA & 0x01;
-	if (button) {
-		led = (led & 0xFF) | 0x60;
-	}
-	button = ~PINA & 0x02;
-        if (button) {
-                led = (led & 0xFF) | 0x60;
-        }
-	button = ~PINA & 0x03;
-        if (button) {
-                led = (led & 0xFF) | 0x70;
-	}
-	button = ~PINA & 0x04;
-        if (button) {
-                led = (led & 0xFF) | 0x70;
-        }
-	button = ~PINA & 0x05;
-        if (button) {
-                led = (led & 0xFF) | 0x38;
-        }
-        button = ~PINA & 0x06;
-        if (button) {
-                led = (led & 0xFF) | 0x38;
-        }
-        button = ~PINA & 0x07;
-        if (button) {
-                led = (led & 0xFF) | 0x3C;
-        }
-        button = ~PINA & 0x08;
-        if (button) {
-                led = (led & 0xFF) | 0x3C;
-        }
-	button = ~PINA & 0x09;
-        if (button) {
-                led = (led & 0xFF) | 0x3C;
-        }
-        button = ~PINA & 0x0A;
-        if (button) {
-                led = (led & 0xFF) | 0x3E;
-        }
-        button = ~PINA & 0x0B;
-        if (button) {
-                led = (led & 0xFF) | 0x3E;
-        }
-        button = ~PINA & 0x0C;
-        if (button) {
-                led = (led & 0xFF) | 0x3E;
-        }
-	button = ~PINA & 0x0D;
-        if (button) {
-                led = (led & 0xFF) | 0x3F;
-        }
-        button = ~PINA & 0x0E;
-        if (button) {
-                led = (led & 0xFF) | 0x3F;
-        }
-        button = ~PINA & 0x0F;
-        if (button) {
-                led = (led & 0xFF) | 0x3F;
+	button = ~PINA & 0x0F;
+        if (button == 0x00) {
+		led = 0x40;
+        } else if (button == 0x01) {
+		led = 0x60;
+	} else if (button == 0x02) {
+                led = 0x60;
+        } else if (button == 0x03) {
+                led = 0x70;
+	} else if (button == 0x04) {
+                led = 0x70;
+        } else if (button == 0x05) {
+                led = 0x38;
+        } else if (button == 0x06) {
+                led = 0x38;
+        } else if (button == 0x07) {
+                led = 0x3C;
+        } else if (button == 0x08) {
+                led = 0x3C;
+        } else if (button == 0x09) {
+                led = 0x3C;
+        } else if (button == 0x0A) {
+                led = 0x3E;
+        } else if (button == 0x0B) {
+                led = 0x3E;
+        } else if (button == 0x0C) {
+                led = 0x3E;
+        } else if (button == 0x0D) {
+                led = 0x3F;
+        } else if (button == 0x0E) {
+                led = 0x3F;
+        } else if (button == 0x0F) {
+        	led = 0x3F;
         }
 	PORTC = led;
     }
